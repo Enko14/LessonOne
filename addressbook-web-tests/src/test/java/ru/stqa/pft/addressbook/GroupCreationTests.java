@@ -75,12 +75,12 @@ public class GroupCreationTests {
     wd.quit();
   }
 
-  private boolean isAlertPresent(FirefoxDriver wd) {
-    try {
-      wd.switchTo().alert();
-      return true;
-    } catch (NoAlertPresentException e) {
-      return false;
-    }
-  }
+//  private boolean isAlertPresent(FirefoxDriver wd) {
+//    try {
+//      wd.switchTo().alert();
+//      return true;
+//    } catch (NoAlertPresentException e) {
+//      return false;
+//    }
+//  }
 }
