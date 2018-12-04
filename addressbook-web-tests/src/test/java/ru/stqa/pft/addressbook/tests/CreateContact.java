@@ -10,15 +10,10 @@ import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.concurrent.TimeUnit;
 
-public class CreateContact {
+public class CreateContact extends TestBase {
   private WebDriver driver;
 
-  @BeforeMethod(alwaysRun = true)
-  public void setUp() {
-    driver = new FirefoxDriver();
-    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    login("admin", "secret");
-  }
+
 
   @Test
   public void testCreateContact() {
