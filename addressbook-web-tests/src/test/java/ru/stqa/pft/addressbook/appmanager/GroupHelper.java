@@ -33,7 +33,7 @@ public class GroupHelper extends HelperBase{
   }
 
   public void selectGroup() {
-    click(By.name("selected[]"));
+    click(By.cssSelector("input:not(:checked)[type='checkbox']"));
   }
 
   public void initGroupModification() {
