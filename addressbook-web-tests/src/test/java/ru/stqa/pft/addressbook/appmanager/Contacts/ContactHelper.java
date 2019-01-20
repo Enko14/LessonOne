@@ -42,8 +42,8 @@ public class ContactHelper extends HelperBase {
     }
   }
 
-  public void clickEdit() {
-    click(By.xpath("(//img[@alt='Edit'])"));
+  public void clickEdit(int index) {
+    wd.findElements(By.xpath(("//img[@alt='Edit']"))).get(index).click();
   }
 
   public void clickDelete() {
@@ -79,11 +79,11 @@ public class ContactHelper extends HelperBase {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.xpath("//table[@id='maintable']/tbody/tr[@name='entry']"));
     for (WebElement element : elements) {
-      String surname = element.findElement(By.xpath("//tr/td[2]")).getText();
-      String name = element.findElement(By.xpath("//tr/td[3]")).getText();
-      String city =element.findElement(By.xpath("//tr/td[6]")).getText();
-      String id=element.findElement(By.tagName("input")).getAttribute("id");
-      ContactData contactData = new ContactData(id,name, surname, null,null,city,null,null);
+      String surname = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
+      String name = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
+      String city = element.findElement(By.cssSelector("td:nth-child(6)")).getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
+      ContactData contactData = new ContactData(id, name, surname, null, null, city, null, null);
       contacts.add(contactData);
     }
     return contacts;

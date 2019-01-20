@@ -3,7 +3,7 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-  private final String id;
+  private int id;
   private final String name;
   private final String surname;
   private final String nickname;
@@ -15,7 +15,7 @@ public class ContactData {
   private final String group;
 
 
-  public ContactData(String id, String name, String surname, String nickname, String company, String city, String email, String group) {
+  public ContactData(int id, String name, String surname, String nickname, String company, String city, String email, String group) {
     this.id = id;
     this.name = name;
     this.surname = surname;
@@ -27,7 +27,7 @@ public class ContactData {
   }
 
   public ContactData(String name, String surname, String nickname, String company, String city, String email, String group) {
-    this.id = null;
+    this.id = 0;
     this.name = name;
     this.surname = surname;
     this.nickname = nickname;
@@ -63,7 +63,11 @@ public class ContactData {
             '}';
   }
 
-  public String getId() {
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public int getId() {
     return id;
   }
 
