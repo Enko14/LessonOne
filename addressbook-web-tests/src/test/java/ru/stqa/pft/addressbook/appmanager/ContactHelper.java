@@ -20,7 +20,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void submitUpdate() {
-    click(By.xpath("(//input[@name='update'])"));
+    click(By.xpath("(//input[@value='Update'])"));
   }
 
   public void fillContactForm(ContactData contactData, boolean creation) {
@@ -55,5 +55,14 @@ public class ContactHelper extends HelperBase {
 
   public void goToAddNewContact() {
     click(By.linkText("add new"));
+  }
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
+  }
+  public void createContact(ContactData contact) {
+    goToAddNewContact();
+    fillContactForm(contact,true);
+    submitCreation();
+    returnHomePage();
   }
 }
