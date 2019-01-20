@@ -1,6 +1,7 @@
 .gradle
 .idea
 addressbook-web-tests/out
+sandbox/out
 /build/
 
 
