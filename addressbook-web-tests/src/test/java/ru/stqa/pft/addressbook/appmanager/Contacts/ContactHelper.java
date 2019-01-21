@@ -74,6 +74,7 @@ public class ContactHelper extends HelperBase {
     submitCreation();
     returnHomePage();
   }
+
   public void modify(int index, ContactData contact) {
     select(index);
     clickEdit(index);
@@ -81,11 +82,13 @@ public class ContactHelper extends HelperBase {
     submitUpdate();
     returnHomePage();
   }
+
   public void delete(int index) {
     select(index);
     clickDelete();
     submitAllert();
   }
+
   public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.xpath("//table[@id='maintable']/tbody/tr[@name='entry']"));
@@ -94,8 +97,7 @@ public class ContactHelper extends HelperBase {
       String name = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
       String city = element.findElement(By.cssSelector("td:nth-child(6)")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-      ContactData contactData = new ContactData(id, name, surname, null, null, city, null, null);
-      contacts.add(contactData);
+      contacts.add(new ContactData().withId(id).withName(name).withSurname(surname).withCity(city));
     }
     return contacts;
   }

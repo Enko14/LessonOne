@@ -3,38 +3,52 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-  private int id;
-  private final String name;
-  private final String surname;
-  private final String nickname;
-  private final String company;
-  private final String city;
-  private final String email;
+  private int id=Integer.MAX_VALUE;
+  private String name;
+  private String surname;
+  private String nickname;
+  private String company;
+  private String city;
+  private String email;
+  private String group;
 
-
-  private final String group;
-
-
-  public ContactData(int id, String name, String surname, String nickname, String company, String city, String email, String group) {
+  public ContactData withId(int id) {
     this.id = id;
+    return this;
+  }
+  public ContactData withName(String name) {
     this.name = name;
-    this.surname = surname;
-    this.nickname = nickname;
-    this.company = company;
-    this.city = city;
-    this.email = email;
-    this.group = group;
+    return this;
   }
 
-  public ContactData(String name, String surname, String nickname, String company, String city, String email, String group) {
-    this.id = 0;
-    this.name = name;
+  public ContactData withSurname(String surname) {
     this.surname = surname;
+    return this;
+  }
+
+  public ContactData withNickname(String nickname) {
     this.nickname = nickname;
+    return this;
+  }
+
+  public ContactData withCompany(String company) {
     this.company = company;
+    return this;
+  }
+
+  public ContactData withCity(String city) {
     this.city = city;
+    return this;
+  }
+
+  public ContactData withEmail(String email) {
     this.email = email;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
     this.group = group;
+    return this;
   }
 
   @Override
@@ -63,9 +77,7 @@ public class ContactData {
             '}';
   }
 
-  public void setId(int id) {
-    this.id = id;
-  }
+
 
   public int getId() {
     return id;

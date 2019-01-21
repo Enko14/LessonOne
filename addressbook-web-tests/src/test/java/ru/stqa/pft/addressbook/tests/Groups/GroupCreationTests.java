@@ -15,12 +15,11 @@ public class GroupCreationTests extends TestBase {
   public void testGroupCreation() {
     app.goTo().GroupPage();
     List<GroupData> before=app.group().list();
-    GroupData group=new GroupData("test11", null, null);
+    GroupData group=new GroupData().withName("test11");
     app.group().create(group);
     List<GroupData> after=app.group().list();
     Assert.assertEquals(after.size(), before.size() + 1);
-    group.setId(after.stream().max(Comparator.comparingInt(GroupData::getId)).get().getId());
-    before.add(group);
+    before.add(group.withId(after.stream().max(Comparator.comparingInt(GroupData::getId)).get().getId()));
     Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
   }
 
