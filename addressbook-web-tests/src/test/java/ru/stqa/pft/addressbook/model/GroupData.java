@@ -25,15 +25,6 @@ public class GroupData {
     return this;
   }
 
-  public GroupData withFooter(String footer) {
-    this.footer = footer;
-    return this;
-  }
-
-  public int getId() {
-    return id;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -44,16 +35,25 @@ public class GroupData {
   }
 
   @Override
+  public int hashCode() {
+    return Objects.hash(id, name);
+  }
+
+  public GroupData withFooter(String footer) {
+    this.footer = footer;
+    return this;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  @Override
   public String toString() {
     return "GroupData{" +
             "id=" + id +
             ", name='" + name + '\'' +
             '}';
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, name);
   }
 
   public String getName() {

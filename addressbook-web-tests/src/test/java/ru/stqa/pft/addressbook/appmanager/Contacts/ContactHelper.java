@@ -7,8 +7,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.appmanager.HelperBase;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ContactHelper extends HelperBase {
@@ -42,8 +42,8 @@ public class ContactHelper extends HelperBase {
     }
   }
 
-  public void clickEdit(int index) {
-    wd.findElements(By.xpath(("//img[@alt='Edit']"))).get(index).click();
+  public void clickEdit(int id) {
+    wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "'")).click();
   }
 
   public void clickDelete() {
@@ -54,9 +54,10 @@ public class ContactHelper extends HelperBase {
     submit().accept();
   }
 
-  public void select(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
-    ;
+
+
+  public void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
 
   public void goToAddNewContact() {
@@ -75,22 +76,22 @@ public class ContactHelper extends HelperBase {
     returnHomePage();
   }
 
-  public void modify(int index, ContactData contact) {
-    select(index);
-    clickEdit(index);
+  public void modify(ContactData contact) {
+    selectContactById(contact.getId());
+    clickEdit(contact.getId());
     fillContactForm(contact, false);
     submitUpdate();
     returnHomePage();
   }
 
-  public void delete(int index) {
-    select(index);
+  public void delete(ContactData contact) {
+    selectContactById(contact.getId());
     clickDelete();
     submitAllert();
   }
 
-  public List<ContactData> list() {
-    List<ContactData> contacts = new ArrayList<ContactData>();
+  public Contacts all() {
+    Contacts contacts = new Contacts();
     List<WebElement> elements = wd.findElements(By.xpath("//table[@id='maintable']/tbody/tr[@name='entry']"));
     for (WebElement element : elements) {
       String surname = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
