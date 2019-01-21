@@ -14,15 +14,15 @@ public class CreateContact extends TestBase {
 
   @Test
   public void testCreateContact() {
-    app.getNavigationHelper().goToHomePage();
-    List<ContactData> before = app.getContactHelper().getContactList();
-    ContactData contact=new ContactData("Aleksey", "Meshchaninov", "enkooo", "InfoTeCS", "Moscow", "enko@mail.ru", "test11");
-    app.getContactHelper().createContact(contact);
-    List<ContactData> after = app.getContactHelper().getContactList();
-    Assert.assertEquals(after.size(), before.size()+1);
+    app.goTo().goToHomePage();
+    List<ContactData> before = app.contact().list();
+    ContactData contact = new ContactData("Aleksey", "Meshchaninov", "enkooo", "InfoTeCS", "Moscow", "enko@mail.ru", "test11");
+    app.contact().create(contact);
+    List<ContactData> after = app.contact().list();
+    Assert.assertEquals(after.size(), before.size() + 1);
     contact.setId(after.stream().max(Comparator.comparingInt(ContactData::getId)).get().getId());
     before.add(contact);
-    Assert.assertEquals(new HashSet<Object>(after),new HashSet<Object>(before));
+    Assert.assertEquals(new HashSet<Object>(after), new HashSet<Object>(before));
 
   }
 }
