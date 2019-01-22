@@ -33,7 +33,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("lastname"), contactData.getSurname());
     type(By.name("nickname"), contactData.getNickname());
     type(By.name("company"), contactData.getCompany());
-    type(By.name("home"), contactData.getCity());
+    type(By.name("address"), contactData.getCity());
     type(By.name("email"), contactData.getEmail());
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -96,7 +96,7 @@ public class ContactHelper extends HelperBase {
     for (WebElement element : elements) {
       String surname = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
       String name = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
-      String city = element.findElement(By.cssSelector("td:nth-child(6)")).getText();
+      String city = element.findElement(By.cssSelector("td:nth-child(4)")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
       contacts.add(new ContactData().withId(id).withName(name).withSurname(surname).withCity(city));
     }
