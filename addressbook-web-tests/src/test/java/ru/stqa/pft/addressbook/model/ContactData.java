@@ -3,7 +3,7 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-  private int id=Integer.MAX_VALUE;
+  private int id = Integer.MAX_VALUE;
   private String name;
   private String surname;
   private String nickname;
@@ -12,10 +12,24 @@ public class ContactData {
   private String email;
   private String group;
 
-  public ContactData withId(int id) {
-    this.id = id;
-    return this;
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData contactData = (ContactData) o;
+    return id == contactData.id &&
+            Objects.equals(name, contactData.name) &&
+            Objects.equals(surname, contactData.surname) &&
+            Objects.equals(city, contactData.city);
   }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, name, surname, city);
+  }
+
   public ContactData withName(String name) {
     this.name = name;
     return this;
@@ -50,21 +64,9 @@ public class ContactData {
     this.group = group;
     return this;
   }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return Objects.equals(id, that.id) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(surname, that.surname) &&
-            Objects.equals(city, that.city);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, name, surname, city);
+  public ContactData withId(int id) {
+    this.id = id;
+    return this;
   }
 
   @Override
@@ -76,7 +78,6 @@ public class ContactData {
             ", city='" + city + '\'' +
             '}';
   }
-
 
 
   public int getId() {
