@@ -68,6 +68,22 @@ public class ContactHelper extends HelperBase {
     // return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[@name='entry']"));
   }
 
+  public ContactData getContactFromEdit(ContactData contactData) {
+    clickEdit(contactData.getId());
+    String name = wd.findElement(By.name("firstname")).getAttribute("value");
+    String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+    String nickname = wd.findElement(By.name("nickname")).getAttribute("value");
+    String company = wd.findElement(By.name("company")).getAttribute("value");
+    String address = wd.findElement(By.name("address")).getAttribute("value");
+    String email = wd.findElement(By.name("email")).getAttribute("value");
+    String home = wd.findElement(By.name("home")).getAttribute("value");
+    String work = wd.findElement(By.name("work")).getAttribute("value");
+    String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+    return new ContactData().withName(name).withSurname(lastname).withCompany(company)
+            .withCity(address).withNickname(nickname).withEmail(email).withHomeTel(home).withWorkTel(work).withMobileTel(mobile);
+
+  }
+
   private Contacts contactsCache = null;
 
   public void create(ContactData contact) {
@@ -104,8 +120,10 @@ public class ContactHelper extends HelperBase {
       String surname = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
       String name = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
       String city = element.findElement(By.cssSelector("td:nth-child(4)")).getText();
+      String[] phones = element.findElement(By.cssSelector("td:nth-child(6)")).getText().split("\n");
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-      contactsCache.add(new ContactData().withId(id).withName(name).withSurname(surname).withCity(city));
+      contactsCache.add(new ContactData().withId(id).withName(name).withSurname(surname)
+              .withCity(city).withHomeTel(phones[0]).withMobileTel(phones[1]).withWorkTel(phones[2]));
     }
     return new Contacts(contactsCache);
   }

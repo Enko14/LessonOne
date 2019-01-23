@@ -11,7 +11,9 @@ public class ContactData {
   private String city;
   private String email;
   private String group;
-
+  private String homeTel;
+  private String workTel;
+  private String mobileTel;
 
 
   @Override
@@ -32,6 +34,33 @@ public class ContactData {
 
   public ContactData withName(String name) {
     this.name = name;
+    return this;
+  }
+
+  public String getHomeTel() {
+    return homeTel;
+  }
+
+  public ContactData withHomeTel(String homeTel) {
+    this.homeTel = homeTel;
+    return this;
+  }
+
+  public String getWorkTel() {
+    return workTel;
+  }
+
+  public ContactData withWorkTel(String workTel) {
+    this.workTel = workTel;
+    return this;
+  }
+
+  public String getMobileTel() {
+    return mobileTel;
+  }
+
+  public ContactData withMobileTel(String mobileTel) {
+    this.mobileTel = mobileTel;
     return this;
   }
 
@@ -64,6 +93,7 @@ public class ContactData {
     this.group = group;
     return this;
   }
+
   public ContactData withId(int id) {
     this.id = id;
     return this;
