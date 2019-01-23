@@ -14,6 +14,7 @@ public class ContactData {
   private String homeTel;
   private String workTel;
   private String mobileTel;
+  private String allphones;
 
 
   @Override
@@ -140,5 +141,14 @@ public class ContactData {
 
   public String getGroup() {
     return group;
+  }
+
+  public ContactData withAllphones(String allphones) {
+    this.allphones = allphones;
+    return this;
+  }
+
+  public String getAllphones() {
+    return allphones;
   }
 }

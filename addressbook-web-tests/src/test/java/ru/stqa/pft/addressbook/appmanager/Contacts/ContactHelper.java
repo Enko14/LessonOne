@@ -119,11 +119,12 @@ public class ContactHelper extends HelperBase {
     for (WebElement element : elements) {
       String surname = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
       String name = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
-      String city = element.findElement(By.cssSelector("td:nth-child(4)")).getText();
-      String[] phones = element.findElement(By.cssSelector("td:nth-child(6)")).getText().split("\n");
+      String adress = element.findElement(By.cssSelector("td:nth-child(4)")).getText();
+      String email = element.findElement(By.cssSelector("a[href*='mailto:']")).getText();
+      String allphones = element.findElement(By.cssSelector("td:nth-child(6)")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
       contactsCache.add(new ContactData().withId(id).withName(name).withSurname(surname)
-              .withCity(city).withHomeTel(phones[0]).withMobileTel(phones[1]).withWorkTel(phones[2]));
+              .withCity(adress).withAllphones(allphones).withEmail(email));
     }
     return new Contacts(contactsCache);
   }
