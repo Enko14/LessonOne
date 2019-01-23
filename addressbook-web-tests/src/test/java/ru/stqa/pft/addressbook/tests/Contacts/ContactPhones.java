@@ -14,8 +14,12 @@ public class ContactPhones extends TestBase {
     app.goTo().goToHomePage();
     ContactData contactData = app.contact().all().iterator().next();
     ContactData contact = app.contact().getContactFromEdit(contactData);
-    assertThat(contactData.getHomeTel(), equalTo(contact.getHomeTel()));
-    assertThat(contactData.getMobileTel(), equalTo(contact.getMobileTel()));
-    assertThat(contactData.getWorkTel(), equalTo(contact.getWorkTel()));
+    assertThat(cleanedPhone(contactData.getHomeTel()), equalTo(cleanedPhone(contact.getHomeTel())));
+    assertThat(cleanedPhone(contactData.getMobileTel()), equalTo(cleanedPhone(cleanedPhone(contact.getMobileTel()))));
+    assertThat(cleanedPhone(contactData.getWorkTel()), equalTo(cleanedPhone(contact.getWorkTel())));
+  }
+
+  public String cleanedPhone(String phone) {
+    return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
 }
