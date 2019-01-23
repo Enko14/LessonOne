@@ -35,10 +35,15 @@ public class ContactHelper extends HelperBase {
     type(By.name("company"), contactData.getCompany());
     type(By.name("address"), contactData.getCity());
     type(By.name("email"), contactData.getEmail());
+    attach(By.name("photo"), contactData.getPictire());
     if (creation) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      if (contactData.getGroup() != null) {
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      }
     } else {
-      Assert.assertFalse(isElementPresent(By.name("new_group")));
+      {
+        Assert.assertFalse(isElementPresent(By.name("new_group")));
+      }
     }
   }
 
