@@ -55,7 +55,6 @@ public class ContactHelper extends HelperBase {
   }
 
 
-
   public void selectContactById(int id) {
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
@@ -69,10 +68,13 @@ public class ContactHelper extends HelperBase {
     // return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[@name='entry']"));
   }
 
+  private Contacts contactsCache = null;
+
   public void create(ContactData contact) {
     goToAddNewContact();
     fillContactForm(contact, true);
     submitCreation();
+    contactsCache = null;
     returnHomePage();
   }
 
@@ -81,6 +83,7 @@ public class ContactHelper extends HelperBase {
     clickEdit(contact.getId());
     fillContactForm(contact, false);
     submitUpdate();
+    contactsCache = null;
     returnHomePage();
   }
 
@@ -88,19 +91,23 @@ public class ContactHelper extends HelperBase {
     selectContactById(contact.getId());
     clickDelete();
     submitAllert();
+    contactsCache = null;
   }
 
   public Contacts all() {
-    Contacts contacts = new Contacts();
+    if (contactsCache != null) {
+      return new Contacts(contactsCache);
+    }
+    contactsCache = new Contacts();
     List<WebElement> elements = wd.findElements(By.xpath("//table[@id='maintable']/tbody/tr[@name='entry']"));
     for (WebElement element : elements) {
       String surname = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
       String name = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
       String city = element.findElement(By.cssSelector("td:nth-child(4)")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-      contacts.add(new ContactData().withId(id).withName(name).withSurname(surname).withCity(city));
+      contactsCache.add(new ContactData().withId(id).withName(name).withSurname(surname).withCity(city));
     }
-    return contacts;
+    return new Contacts(contactsCache);
   }
 
 }
