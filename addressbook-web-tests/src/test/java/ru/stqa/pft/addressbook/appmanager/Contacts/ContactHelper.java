@@ -81,11 +81,13 @@ public class ContactHelper extends HelperBase {
     String company = wd.findElement(By.name("company")).getAttribute("value");
     String address = wd.findElement(By.name("address")).getAttribute("value");
     String email = wd.findElement(By.name("email")).getAttribute("value");
+    String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+    String email3 = wd.findElement(By.name("email3")).getAttribute("value");
     String home = wd.findElement(By.name("home")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     return new ContactData().withName(name).withSurname(lastname).withCompany(company)
-            .withCity(address).withNickname(nickname).withEmail(email).withHomeTel(home).withWorkTel(work).withMobileTel(mobile);
+            .withCity(address).withNickname(nickname).withEmail(email).withHomeTel(home).withWorkTel(work).withMobileTel(mobile).withEmail2(email2).withEmail3(email3);
 
   }
 
@@ -125,11 +127,11 @@ public class ContactHelper extends HelperBase {
       String surname = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
       String name = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
       String adress = element.findElement(By.cssSelector("td:nth-child(4)")).getText();
-      String email = element.findElement(By.cssSelector("a[href*='mailto:']")).getText();
+      String allEmails = element.findElement(By.cssSelector("td:nth-child(5)")).getText();
       String allphones = element.findElement(By.cssSelector("td:nth-child(6)")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
       contactsCache.add(new ContactData().withId(id).withName(name).withSurname(surname)
-              .withCity(adress).withAllphones(allphones).withEmail(email));
+              .withCity(adress).withAllphones(allphones).withAllEmails(allEmails));
     }
     return new Contacts(contactsCache);
   }

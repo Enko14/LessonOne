@@ -11,11 +11,37 @@ public class ContactData {
   private String company;
   private String city;
   private String email;
+  private String email2;
+  private String email3;
   private String group;
+
+  public String getAllEmails() {
+    return allEmails;
+  }
+
+  public ContactData withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
+  }
+
+  private String allEmails;
+
+
+  public ContactData withEmail2(String email2) {
+    this.email2 = email2;
+    return this;
+  }
+
+
+  public ContactData withEmail3(String email3) {
+    this.email3 = email3;
+    return this;
+  }
+
   private String homeTel;
   private String workTel;
   private String mobileTel;
-  private String allphones;
+  private String allPhones;
   private File pictire;
 
 
@@ -151,16 +177,24 @@ public class ContactData {
     return email;
   }
 
+  public String getEmail2() {
+    return email2;
+  }
+
+  public String getEmail3() {
+    return email3;
+  }
+
   public String getGroup() {
     return group;
   }
 
   public ContactData withAllphones(String allphones) {
-    this.allphones = allphones;
+    this.allPhones = allphones;
     return this;
   }
 
-  public String getAllphones() {
-    return allphones;
+  public String getAllPhones() {
+    return allPhones;
   }
 }
