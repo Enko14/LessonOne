@@ -40,7 +40,7 @@ public class GroupCreationTests extends TestBase {
 
   @DataProvider
   public Iterator<Object[]> validGroupsFromJSON() throws IOException {
-    try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/big_smile.json")))) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(new File(app.properties.getProperty("data.provider.groups.path"))))) {
       String json = "";
       String line = reader.readLine();
       while (line != null) {

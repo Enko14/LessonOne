@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
   private final String browser;
-  private final Properties properties;
+  public final Properties properties;
   private SessionHelper sessionHelper;
   private ContactHelper contactHelper;
   private NavigationHelper navigationHelper;

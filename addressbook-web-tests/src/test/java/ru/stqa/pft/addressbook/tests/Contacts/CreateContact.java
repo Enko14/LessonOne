@@ -24,7 +24,7 @@ public class CreateContact extends TestBase {
 
   @DataProvider
   public Iterator<Object[]> validDataFromJSON() throws IOException {
-    try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contact.json")))) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(new File(app.properties.getProperty("data.provider.contact.path"))))) {
       String json = "";
       String line = reader.readLine();
       while (line != null) {
