@@ -2,7 +2,7 @@
 .idea
 addressbook-web-tests/out
 sandbox/out
-/build/
+addressbook-web-tests/build
 
 
 # Ignore Gradle GUI config
