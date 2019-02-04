@@ -2,10 +2,12 @@ package ru.stqa.pft.addressbook.tests.Contacts;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 import ru.stqa.pft.addressbook.tests.TestBase;
 
@@ -39,13 +41,20 @@ public class CreateContact extends TestBase {
     }
   }
 
+  @BeforeMethod
+  public void checkAddedGroups() {
+    if (app.db().groups().size() == 0) {
+      app.goTo().GroupPage();
+      app.group().create(new GroupData().withName("test11").withHeader("test22").withFooter("test33"));
+    }
+  }
+
   @Test(dataProvider = "validDataFromJSON")
   public void testCreateContact(ContactData contactData) {
     app.goTo().goToHomePage();
     Groups groups = app.db().groups();
     Contacts before = app.db().contacts();
     contactData.inGroup(groups.iterator().next());
-            // File picture = new File("src/test/resources/big_smile.png");
     app.contact().create(contactData);
     assertThat(app.contact().getContactCount(), equalTo(before.size() + 1));
     Contacts after = app.db().contacts();

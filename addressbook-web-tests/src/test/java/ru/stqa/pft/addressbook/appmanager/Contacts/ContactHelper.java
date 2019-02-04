@@ -8,6 +8,7 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.appmanager.HelperBase;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.List;
 
@@ -141,4 +142,20 @@ public class ContactHelper extends HelperBase {
     return new Contacts(contactsCache);
   }
 
+  private void clickToAddOrRemoveGroup(int groupId, String operation) {
+    new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(groupId));
+    click(By.name(operation));
+  }
+
+  public void groupAddToContact(int contactID, GroupData groupData) {
+    selectContactById(contactID);
+    new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(groupData.getId()));
+    click(By.name("add"));
+  }
+
+  public void contactDeleteFromgroup(int contactID, GroupData groupData) {
+    new Select(wd.findElement(By.name("group"))).selectByValue(String.valueOf(groupData.getId()));
+    selectContactById(contactID);
+    click(By.name("remove"));
+  }
 }
