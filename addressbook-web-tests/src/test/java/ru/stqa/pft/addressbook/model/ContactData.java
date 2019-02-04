@@ -1,25 +1,58 @@
 package ru.stqa.pft.addressbook.model;
 
 import com.google.gson.annotations.Expose;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
 
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
+  @Id
+  @Column(name = "id")
   private int id = Integer.MAX_VALUE;
   @Expose
+  @Column(name = "firstname")
   private String name;
   @Expose
+  @Column(name = "lastname")
   private String surname;
+  @Column(name = "nickname")
   private String nickname;
+  @Column(name = "company")
   private String company;
   @Expose
+  @Column(name = "address")
+  @Type(type = "text")
   private String city;
   @Expose
+  @Column(name = "email")
+  @Type(type = "text")
   private String email;
+  @Column(name = "email2")
+  @Type(type = "text")
   private String email2;
+  @Column(name = "email3")
+  @Type(type = "text")
   private String email3;
+  @Transient
   private String group;
+  @Column(name = "home")
+  @Type(type = "text")
+  private String homeTel;
+  @Column(name = "work")
+  @Type(type = "text")
+  private String workTel;
+  @Column(name = "mobile")
+  @Type(type = "text")
+  private String mobileTel;
+  @Transient
+  private String allPhones;
+  @Column(name = "photo")
+  @Type(type = "text")
+  private String pictire;
 
   public String getAllEmails() {
     return allEmails;
@@ -30,6 +63,7 @@ public class ContactData {
     return this;
   }
 
+  @Transient
   private String allEmails;
 
 
@@ -43,12 +77,6 @@ public class ContactData {
     this.email3 = email3;
     return this;
   }
-
-  private String homeTel;
-  private String workTel;
-  private String mobileTel;
-  private String allPhones;
-  private File pictire;
 
 
   @Override
@@ -135,11 +163,11 @@ public class ContactData {
   }
 
   public File getPictire() {
-    return pictire;
+    return new File(pictire);
   }
 
   public ContactData withPictire(File pictire) {
-    this.pictire = pictire;
+    this.pictire = pictire.getPath();
     return this;
   }
 
