@@ -14,7 +14,7 @@ public class ContactModification extends TestBase {
   public void before() {
     if (app.db().contacts().size() == 0) {
       app.goTo().goToHomePage();
-      app.contact().create(new ContactData().withName("Aleksey").withSurname("Meshchaninov").withNickname("enkooo").withCompany("InfoTeCS").withCity("Moscow").withEmail("enko@mail.ru").withEmail2("enko@mail.ru").withEmail3("enko@mail.ru").withGroup("test11"));
+      app.contact().create(new ContactData().withName("Aleksey").withSurname("Meshchaninov").withNickname("enkooo").withCompany("InfoTeCS").withCity("Moscow").withAddress2("Moscow").withEmail("enko@mail.ru").withEmail2("enko@mail.ru").withEmail3("enko@mail.ru").withGroup("test11"));
     }
   }
 
@@ -22,7 +22,7 @@ public class ContactModification extends TestBase {
   public void testContactModification() {
     Contacts before = app.db().contacts();
     ContactData modifyData = before.iterator().next();
-    ContactData contact = new ContactData().withId(modifyData.getId()).withName("Dmitriy").withSurname("Ivanov").withNickname("oookne").withCompany("InfoTeCS").withCity("Moscow").withEmail("okne@mail.ru").withEmail2("enko@mail.ru").withEmail3("enko@mail.ru");
+    ContactData contact = new ContactData().withId(modifyData.getId()).withName("Dmitriy").withSurname("Ivanov").withNickname("oookne").withCompany("InfoTeCS").withCity("Moscow").withAddress2("Moscow").withEmail("okne@mail.ru").withEmail2("enko@mail.ru").withEmail3("enko@mail.ru");
     app.goTo().goToHomePage();
     app.contact().modify(contact);
     assertThat(app.contact().getContactCount(), equalTo(before.size()));

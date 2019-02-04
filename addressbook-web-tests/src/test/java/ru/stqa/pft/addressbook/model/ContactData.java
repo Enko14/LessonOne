@@ -34,7 +34,34 @@ public class ContactData {
   @Type(type = "text")
   private String email;
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return id == that.id &&
+            Objects.equals(name, that.name) &&
+            Objects.equals(surname, that.surname) &&
+            Objects.equals(nickname, that.nickname) &&
+            Objects.equals(company, that.company) &&
+            Objects.equals(city, that.city) &&
+            Objects.equals(email, that.email) &&
+            Objects.equals(address2, that.address2) &&
+            Objects.equals(email2, that.email2) &&
+            Objects.equals(email3, that.email3);
+  }
 
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, name, surname, nickname, company, city, email, address2, email2, email3);
+  }
+
+  @Expose
+  @Column(name = "address2")
+  @Type(type = "text")
+  private String address2;
+  @Transient
+  private String allEmails;
   @Expose
   @Column(name = "email2")
   @Type(type = "text")
@@ -70,9 +97,15 @@ public class ContactData {
     return this;
   }
 
-  @Transient
-  private String allEmails;
 
+  public String getAddress2() {
+    return address2;
+  }
+
+  public ContactData withAddress2(String address2) {
+    this.address2 = address2;
+    return this;
+  }
 
   public ContactData withEmail2(String email2) {
     this.email2 = email2;
@@ -173,30 +206,10 @@ public class ContactData {
             ", company='" + company + '\'' +
             ", city='" + city + '\'' +
             ", email='" + email + '\'' +
+            ", address2='" + address2 + '\'' +
             ", email2='" + email2 + '\'' +
             ", email3='" + email3 + '\'' +
             '}';
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return id == that.id &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(surname, that.surname) &&
-            Objects.equals(nickname, that.nickname) &&
-            Objects.equals(company, that.company) &&
-            Objects.equals(city, that.city) &&
-            Objects.equals(email, that.email) &&
-            Objects.equals(email2, that.email2) &&
-            Objects.equals(email3, that.email3);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, name, surname, nickname, company, city, email, email2, email3);
   }
 
   public int getId() {
