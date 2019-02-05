@@ -1,5 +1,6 @@
 .gradle
 .idea
+mantis-tests/out
 addressbook-web-tests/out
 sandbox/out
 addressbook-web-tests/build
