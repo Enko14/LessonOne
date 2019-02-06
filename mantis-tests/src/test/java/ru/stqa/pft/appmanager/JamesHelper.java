@@ -30,16 +30,16 @@ public class JamesHelper {
 
   public boolean doesUserExist(String name) {
     initTelnetSession();
-    write("verufy " + name);
+    write("verify " + name);
     String result = readUntil("exist");
     closeTelnetSession();
-    return result.trim().equals("User " + name + "exist");
+    return result.trim().equals("User " + name + "exists");
   }
 
   public void createUser(String name, String passwd) {
     initTelnetSession();
-    write("adduser "+ name + " " + passwd);
-    String result =readUntil("User " + name + " added");
+    write("adduser " + name + " " + passwd);
+    String result = readUntil("User " + name + " added");
     closeTelnetSession();
   }
 
@@ -85,8 +85,8 @@ public class JamesHelper {
       while (true) {
         System.out.print(ch);
         sb.append(ch);
-        if ( ch == lastChar ) {
-          if ( sb.toString().endsWith(pattern) ) {
+        if (ch == lastChar) {
+          if (sb.toString().endsWith(pattern)) {
             return sb.toString();
           }
         }
@@ -108,7 +108,7 @@ public class JamesHelper {
     }
   }
 
-  private void closeTelnetSession() {
+  public void closeTelnetSession() {
     write("quit");
   }
 
@@ -126,6 +126,7 @@ public class JamesHelper {
   }
 
   private Folder openInbox(String username, String password) throws MessagingException {
+    mailserver = app.getProperty("mailserver.host");
     store = mailSession.getStore("pop3");
     store.connect(mailserver, username, password);
     Folder folder = store.getDefaultFolder().getFolder("INBOX");
@@ -137,7 +138,7 @@ public class JamesHelper {
     long now = System.currentTimeMillis();
     while (System.currentTimeMillis() < now + timeout) {
       List<MailMessage> allMail = getAllMail(username, password);
-      if ( allMail.size() > 0 ) {
+      if (allMail.size() > 0) {
         return allMail;
       }
       try {

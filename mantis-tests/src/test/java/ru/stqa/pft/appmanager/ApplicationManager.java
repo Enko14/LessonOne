@@ -20,6 +20,7 @@ public class ApplicationManager {
   private FtpHelper ftp;
   private MailHelper mailHelper;
   private JamesHelper jamesHelper;
+  private DBHelper dbHelper;
 
   public ApplicationManager(String browser) {
 
@@ -91,5 +92,12 @@ public class ApplicationManager {
       jamesHelper = new JamesHelper(this);
     }
     return jamesHelper;
+  }
+
+  public DBHelper db() {
+    if (dbHelper == null) {
+      dbHelper = new DBHelper();
+    }
+    return dbHelper;
   }
 }
