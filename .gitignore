@@ -19,3 +19,21 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
+addressbook-web-tests/addressbook-web-tests.iml
+addressbook-web-tests/src/test/resources/big_smile.csv
+addressbook-web-tests/src/test/resources/big_smile.xml
+sandbox/build/classes/java/main/ru/stqa/pft/sanbox/MyFirst.class
+sandbox/build/distributions/sandbox.tar
+sandbox/build/distributions/sandbox.zip
+sandbox/build/libs/sandbox.jar
+sandbox/build/scripts/sandbox
+sandbox/build/scripts/sandbox.bat
+sandbox/build/tmp/jar/MANIFEST.MF
+sandbox/build/classes/java/main/ru/stqa/pft/sanbox/MyFirst.class
+sandbox/build/distributions/sandbox.tar
+sandbox/build/distributions/sandbox.zip
+sandbox/build/libs/sandbox.jar
+sandbox/build/scripts/sandbox
+sandbox/build/scripts/sandbox.bat
+sandbox/build/tmp/jar/MANIFEST.MF
+sandbox/build/scripts/sandbox.bat
