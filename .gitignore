@@ -5,6 +5,7 @@ addressbook-web-tests/out
 sandbox/out
 addressbook-web-tests/build
 soap-sample/out
+soap-sample/build
 
 # Ignore Gradle GUI config
 gradle-app.setting
