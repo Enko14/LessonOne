@@ -3,6 +3,7 @@
 mantis-tests/out
 addressbook-web-tests/out
 sandbox/out
+sandbox/build/*
 addressbook-web-tests/build
 soap-sample/out
 soap-sample/build
