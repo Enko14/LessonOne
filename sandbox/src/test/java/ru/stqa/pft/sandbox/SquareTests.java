@@ -12,7 +12,7 @@ public class SquareTests {
   @Test(priority = 1)
   public void testArea() {
     Square s = new Square(5);
-    assertEquals(s.area(), 20.0);
+    assertEquals(s.area(), 25.0);
   }
 
   @Test(priority = 2)
