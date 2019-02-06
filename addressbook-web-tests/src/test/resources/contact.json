@@ -2,61 +2,34 @@
   {
     "name": "Aleksey 0",
     "surname": "Meshchaninov 0",
+    "nickname": "enkooo 0",
+    "company": "InfoTeCS 0",
     "city": "Moscow 0",
-    "email": "enkooo0@mail.ru"
+    "email": "enkooo0@mail.ru",
+    "address2": "Moscow 0",
+    "email2": "enkooo0@mail.ru",
+    "email3": "enkooo0@mail.ru"
   },
   {
     "name": "Aleksey 1",
     "surname": "Meshchaninov 1",
+    "nickname": "enkooo 1",
+    "company": "InfoTeCS 1",
     "city": "Moscow 1",
-    "email": "enkooo1@mail.ru"
+    "email": "enkooo1@mail.ru",
+    "address2": "Moscow 1",
+    "email2": "enkooo1@mail.ru",
+    "email3": "enkooo1@mail.ru"
   },
   {
     "name": "Aleksey 2",
     "surname": "Meshchaninov 2",
+    "nickname": "enkooo 2",
+    "company": "InfoTeCS 2",
     "city": "Moscow 2",
-    "email": "enkooo2@mail.ru"
-  },
-  {
-    "name": "Aleksey 3",
-    "surname": "Meshchaninov 3",
-    "city": "Moscow 3",
-    "email": "enkooo3@mail.ru"
-  },
-  {
-    "name": "Aleksey 4",
-    "surname": "Meshchaninov 4",
-    "city": "Moscow 4",
-    "email": "enkooo4@mail.ru"
-  },
-  {
-    "name": "Aleksey 5",
-    "surname": "Meshchaninov 5",
-    "city": "Moscow 5",
-    "email": "enkooo5@mail.ru"
-  },
-  {
-    "name": "Aleksey 6",
-    "surname": "Meshchaninov 6",
-    "city": "Moscow 6",
-    "email": "enkooo6@mail.ru"
-  },
-  {
-    "name": "Aleksey 7",
-    "surname": "Meshchaninov 7",
-    "city": "Moscow 7",
-    "email": "enkooo7@mail.ru"
-  },
-  {
-    "name": "Aleksey 8",
-    "surname": "Meshchaninov 8",
-    "city": "Moscow 8",
-    "email": "enkooo8@mail.ru"
-  },
-  {
-    "name": "Aleksey 9",
-    "surname": "Meshchaninov 9",
-    "city": "Moscow 9",
-    "email": "enkooo9@mail.ru"
+    "email": "enkooo2@mail.ru",
+    "address2": "Moscow 2",
+    "email2": "enkooo2@mail.ru",
+    "email3": "enkooo2@mail.ru"
   }
 ]
