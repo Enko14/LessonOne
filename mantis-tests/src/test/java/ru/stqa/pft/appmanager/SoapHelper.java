@@ -26,7 +26,7 @@ public class SoapHelper {
     return Arrays.asList(projects).stream().map(p -> new Project().withId(p.getId().intValue()).withName(p.getName())).collect(Collectors.toSet());
   }
 
-  private MantisConnectPortType getMantisConnectPortType() throws ServiceException, MalformedURLException {
+  public MantisConnectPortType getMantisConnectPortType() throws ServiceException, MalformedURLException {
     return new MantisConnectLocator().getMantisConnectPort(new URL(app.getProperty("soap.url")));
   }
 
