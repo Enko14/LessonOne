@@ -4,7 +4,7 @@ mantis-tests/out
 addressbook-web-tests/out
 sandbox/out
 addressbook-web-tests/build
-
+soap-sample/out
 
 # Ignore Gradle GUI config
 gradle-app.setting
